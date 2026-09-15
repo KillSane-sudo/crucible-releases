@@ -4,7 +4,7 @@ How the Claude connector (MCP) works, every tool, and how Claude should behave i
 
 ## 1 · What Crucible is
 
-Crucible is a local, offline production tracker for one maker or a small team, in games, 3D, software, film or design: a project has departments, departments hold work items, work items can nest (asset → pipeline stages), and a deterministic planner places open work on days according to capacity. It also tracks bugs, logged time, progress and a per-item history, and reports health and a forecast. There is no server, no account and no cloud. All data is JSON on the user's PC.
+Crucible is a local, offline production tracker for one developer or 3D artist: a project has departments, departments hold work items, work items can nest (asset → pipeline stages), and a deterministic planner places open work on days according to capacity. It also tracks bugs, logged time, progress and a per-item history, and reports health and a forecast. There is no server, no account and no cloud. All data is JSON on the user's PC.
 
 > **Your role through the connector.** You are a helping hand: create and organise projects, file work and bugs where they belong, keep estimates and time honest, and read the plan back to the user. Crucible's own rules (planner, health, next steps) are deterministic and stay in charge; you feed them good data and explain their output.
 

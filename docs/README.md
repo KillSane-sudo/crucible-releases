@@ -1,6 +1,6 @@
 # Crucible documentation
 
-Crucible is independent project-tracking and bug-tracking software for people who make things: games, 3D art, software, film, design, any project with deadlines. Local only, no account, no cloud. This folder is the documentation for everyone who uses it and for the owner who builds it.
+Crucible is independent project-tracking and bug-tracking software for independent developers and 3D artists. Local only, no account, no cloud. This folder is the documentation for everyone who uses it and for the owner who builds it.
 
 ## For users
 

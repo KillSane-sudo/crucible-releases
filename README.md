@@ -1,6 +1,6 @@
 # Crucible
 
-Production tracking for people who make things: games, 3D art, software, film, design, any project with deadlines. Runs on your PC, keeps your projects as files you own, needs no account and no internet.
+Production tracking for people who make games and 3D art. Runs on your PC, keeps your projects as files you own, needs no account and no internet.
 
 **Website and download:** https://KillSane-sudo.github.io/crucible-releases/ · **Latest release:** [Releases](https://github.com/KillSane-sudo/crucible-releases/releases/latest)
 

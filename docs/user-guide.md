@@ -4,7 +4,7 @@ The complete user manual, generated from `docs/manual/manual.html` (also availab
 
 ## 1 · What Crucible is
 
-Crucible is a personal production tracker for people who make things on their own or in a very small team: games and 3D art first, where it grew up, but equally software, film, design or any project with tasks, hours and a deadline. It holds your project structure (departments and their pipelines), every piece of work (tasks, assets, stages, bugs), how long things take, what you actually did each day, and it works out what you should do next and whether you will finish on time.
+Crucible is a personal production tracker for people who build games and 3D assets on their own or in a very small team. It holds your project structure (departments and their pipelines), every piece of work (tasks, assets, stages, bugs), how long things take, what you actually did each day, and it works out what you should do next and whether you will finish on time.
 
 It is built to answer six questions quickly:
 

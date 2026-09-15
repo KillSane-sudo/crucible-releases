@@ -1,6 +1,6 @@
 # Crucible — Claude connector
 
-How the Claude connector (MCP) works, every tool, and how Claude should behave inside a project. Generated from `docs/manual/claude-guide.html` (PDF: [Crucible-Guide-for-Claude.pdf](manual/Crucible-Guide-for-Claude.pdf)). Ready-to-paste prompts are in [CLAUDE_PROMPTS.md](CLAUDE_PROMPTS.md).
+How the Claude connector (MCP) works, every tool, and how Claude should behave inside a project. Generated from `docs/manual/claude-guide.html` (PDF: [Crucible-Guide-for-Claude.pdf](manual/Crucible-Guide-for-Claude.pdf)).
 
 ## 1 · What Crucible is
 

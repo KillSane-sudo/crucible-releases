@@ -36,7 +36,7 @@ The project is added next to any others you have; switch between them from the n
 
 ## 5. Optional: let Claude help
 
-Project Settings → **Claude connector** → Copy the snippet for Claude Code or the Claude desktop app. Then, in any chat: "Create a 45-day asset-pack project called X with the departments you recommend, and add these ten assets." See [claude-connector.md](claude-connector.md) and [CLAUDE_PROMPTS.md](CLAUDE_PROMPTS.md).
+Project Settings → **Claude connector** → Copy the snippet for Claude Code or the Claude desktop app. Then, in any chat: "Create a 45-day asset-pack project called X with the departments you recommend, and add these ten assets." See [claude-connector.md](claude-connector.md).
 
 ## Keyboard
 

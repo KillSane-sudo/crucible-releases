@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crucible — Documentation</title>
+<style>
+  :root { --bg:#1a1b1e; --panel:#222327; --text:#e9e6e2; --text2:#c9c6c1; --text3:#9a9ca3; --hair:#2d2e33; --rule:#3a3b41; --accent:#4fb8b5 }
+  * { box-sizing:border-box } body { margin:0; background:var(--bg); color:var(--text); font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif }
+  a { color:var(--accent); text-decoration:none } a:hover { text-decoration:underline }
+  .wrap { max-width:860px; margin:0 auto; padding:0 24px 60px }
+  header { padding:22px 0; display:flex; align-items:center; gap:18px; border-bottom:1px solid var(--hair) }
+  header .brand { font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:12px; color:var(--accent) }
+  header nav { margin-left:auto; display:flex; gap:18px; font-size:13px } header nav a { color:var(--text3) }
+  h1 { font-size:34px; margin:40px 0 6px } .lead { color:var(--text3); margin:0 0 28px }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:18px } @media (max-width:640px) { .grid { grid-template-columns:1fr } }
+  .card { background:var(--panel); border:1px solid var(--hair); padding:18px } .card h2 { margin:0 0 6px; font-size:17px } .card p { margin:0 0 10px; color:var(--text3); font-size:14px } .card .links { display:flex; gap:14px; flex-wrap:wrap; font-size:14px }
+</style>
+</head>
+<body><div class="wrap">
+  <header><span class="brand">Crucible</span><nav><a href="../index.html">Home</a><a href="../features.html">Features</a><a href="https://github.com/KillSane-sudo/crucible-releases/releases/latest">Download</a><a href="https://github.com/KillSane-sudo/crucible-releases/issues">Bugs &amp; requests</a></nav></header>
+  <h1>Documentation</h1>
+  <p class="lead">Start with the quick start if you have ten minutes, the user manual if you want to understand every screen.</p>
+  <div class="grid">
+    <div class="card"><h2>User manual</h2><p>All 22 chapters with screenshots: the window, every screen, the planner, departments and pipelines, bugs, search, time log, reports, several projects, the Claude connector, questions and answers.</p><div class="links"><a href="manual/manual.html">Read online</a><a href="manual/Crucible-User-Manual.pdf">PDF</a><a href="https://github.com/KillSane-sudo/crucible-releases/blob/main/docs/user-guide.md">Markdown on GitHub</a></div></div>
+    <div class="card"><h2>Quick start</h2><p>Install, make your project with the wizard, work a day, end the week. Ten minutes.</p><div class="links"><a href="https://github.com/KillSane-sudo/crucible-releases/blob/main/docs/quick-start.md">Read on GitHub</a></div></div>
+    <div class="card"><h2>Feature list</h2><p>Everything the free build does, in one table.</p><div class="links"><a href="../features.html">Features</a></div></div>
+    <div class="card"><h2>Claude connector</h2><p>Let Claude create projects, file bugs and read your plan from any chat. Setup, every tool, and how Claude should behave inside a project.</p><div class="links"><a href="manual/claude-guide.html">Read online</a><a href="manual/Crucible-Guide-for-Claude.pdf">PDF</a><a href="https://github.com/KillSane-sudo/crucible-releases/blob/main/docs/CLAUDE_PROMPTS.md">Ready prompts</a></div></div>
+    <div class="card"><h2>Changelog</h2><p>What every version added.</p><div class="links"><a href="https://github.com/KillSane-sudo/crucible-releases/blob/main/CHANGELOG.md">Changelog</a></div></div>
+    <div class="card"><h2>Help</h2><p>Found a bug or want something? Open an issue; there is a template. I answer.</p><div class="links"><a href="https://github.com/KillSane-sudo/crucible-releases/issues">Issues</a><a href="https://github.com/KillSane-sudo/crucible-releases/discussions">Discussions</a></div></div>
+  </div>
+</div></body></html>

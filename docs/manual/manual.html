@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Crucible 0.7 — User Manual</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm 20mm 16mm; }
+  :root { --ink: #1d1d1b; --ink2: #4a4a46; --ink3: #7a7975; --rule: #d9d6d0; --accent: #2a8a87; --tint: #e8f4f3; --warn: #9a6b12; }
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; font-size: 10.5pt; line-height: 1.45; color: var(--ink); margin: 0; }
+  h1 { font-size: 26pt; margin: 0 0 4pt; letter-spacing: -.01em; }
+  h2 { font-size: 16pt; margin: 0 0 8pt; padding-bottom: 4pt; border-bottom: 2px solid var(--ink); page-break-after: avoid; }
+  h3 { font-size: 12pt; margin: 14pt 0 4pt; page-break-after: avoid; }
+  h4 { font-size: 10.5pt; margin: 10pt 0 3pt; color: var(--ink2); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; page-break-after: avoid; }
+  p { margin: 0 0 7pt; }
+  ul, ol { margin: 0 0 8pt 18pt; padding: 0; } li { margin: 0 0 3pt; }
+  .chapter { page-break-before: always; }
+  .cover { height: 250mm; display: flex; flex-direction: column; justify-content: center; }
+  .cover .kicker { font-size: 10pt; letter-spacing: .2em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 10pt; }
+  .cover h1 { font-size: 40pt; }
+  .cover .sub { font-size: 14pt; color: var(--ink2); margin: 6pt 0 24pt; }
+  .cover img { width: 100%; border: 1px solid var(--rule); }
+  .cover .meta { margin-top: 18pt; font-size: 9.5pt; color: var(--ink3); }
+  figure { margin: 8pt 0 12pt; page-break-inside: avoid; }
+  figure img { width: 100%; border: 1px solid var(--rule); display: block; }
+  figure.half img { width: 60%; }
+  figcaption { font-size: 9pt; color: var(--ink3); margin-top: 4pt; }
+  .callout { background: var(--tint); border-left: 3px solid var(--accent); padding: 7pt 10pt; margin: 8pt 0 10pt; page-break-inside: avoid; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10pt 18pt; }
+  table { width: 100%; border-collapse: collapse; margin: 6pt 0 10pt; font-size: 9.5pt; }
+  th { text-align: left; font-size: 8.5pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink3); border-bottom: 1px solid var(--ink); padding: 4pt 6pt 4pt 0; }
+  td { padding: 4pt 6pt 4pt 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  tr { page-break-inside: avoid; }
+  kbd { font-family: Consolas, monospace; font-size: 9pt; background: #f0efec; border: 1px solid var(--rule); border-radius: 3px; padding: 0 4pt; }
+  .toc ol { list-style: none; margin: 0; columns: 2; column-gap: 24pt; }
+  .toc li { margin: 0 0 4pt; break-inside: avoid; }
+  .toc a { color: var(--ink); text-decoration: none; }
+  .toc .n { display: inline-block; width: 22pt; color: var(--accent); font-weight: 700; }
+  .step { display: grid; grid-template-columns: 22pt 1fr; gap: 6pt; margin-bottom: 6pt; }
+  .step b { color: var(--accent); }
+  .check td:first-child { width: 30%; font-weight: 600; }
+  .muted { color: var(--ink3); }
+  @media screen { body { max-width: 860px; margin: 0 auto; padding: 24px 28px 60px; background: #fbfaf8; } .chapter { page-break-before: auto; padding-top: 28pt; border-top: 1px solid var(--rule); margin-top: 28pt; } .cover { height: auto; padding: 40pt 0 20pt; } }
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="kicker">User manual · version 0.7</div>
+  <h1>Crucible</h1>
+  <div class="sub">Independent project tracking and bug tracking for game developers and 3D artists. One person, one plan, every day.</div>
+  <img src="shots/01-dashboard.png" alt="Crucible dashboard">
+  <div class="meta">Local, offline desktop app for Windows. No account, no cloud; your data stays in files on your PC.<br>This manual covers Crucible 0.7 (September 2026).</div>
+</section>
+
+<section class="chapter toc">
+  <h2>Contents</h2>
+  <ol>
+    <li><span class="n">1</span><a href="#c1">What Crucible is</a></li>
+    <li><span class="n">2</span><a href="#c2">Install and first launch</a></li>
+    <li><span class="n">3</span><a href="#c3">The window: rail, header, shortcuts</a></li>
+    <li><span class="n">4</span><a href="#c4">The ideas behind it (read this once)</a></li>
+    <li><span class="n">5</span><a href="#c5">Dashboard</a></li>
+    <li><span class="n">6</span><a href="#c6">Today</a></li>
+    <li><span class="n">7</span><a href="#c7">The item window (tasks and bugs)</a></li>
+    <li><span class="n">8</span><a href="#c8">Departments</a></li>
+    <li><span class="n">9</span><a href="#c9">Adding a department and the next-step engine</a></li>
+    <li><span class="n">10</span><a href="#c10">Planner</a></li>
+    <li><span class="n">11</span><a href="#c11">Timeline and Backlog</a></li>
+    <li><span class="n">12</span><a href="#c12">Bugs / Issues</a></li>
+    <li><span class="n">13</span><a href="#c13">Search</a></li>
+    <li><span class="n">14</span><a href="#c14">Time log</a></li>
+    <li><span class="n">15</span><a href="#c15">Reports</a></li>
+    <li><span class="n">16</span><a href="#c16">Project Settings and the New Project wizard</a></li>
+    <li><span class="n">17</span><a href="#c17">A normal working day</a></li>
+    <li><span class="n">18</span><a href="#c18">Your data: where it lives, backups, sharing</a></li>
+    <li><span class="n">19</span><a href="#c19">Questions and answers</a></li>
+    <li><span class="n">20</span><a href="#c20">Feature checklist</a></li>
+    <li><span class="n">21</span><a href="#c21">Several projects</a></li>
+    <li><span class="n">22</span><a href="#c22">The Claude connector</a></li>
+    <li><span class="n">23</span><a href="#c23">Reading &amp; focus: fonts, themes, Focus mode, low-energy days</a></li>
+  </ol>
+</section>
+
+<section class="chapter" id="c1">
+  <h2>1 · What Crucible is</h2>
+  <p>Crucible is a personal production tracker for people who build games and 3D assets on their own or in a very small team. It holds your project structure (departments and their pipelines), every piece of work (tasks, assets, stages, bugs), how long things take, what you actually did each day, and it works out what you should do next and whether you will finish on time.</p>
+  <p>It is built to answer six questions quickly:</p>
+  <ul>
+    <li><b>What am I doing now?</b> Today's focus on the Dashboard and the Today screen.</li>
+    <li><b>What should I do next?</b> The Next step block, computed from your pipelines and dependencies.</li>
+    <li><b>What is blocking me?</b> Risks, blockers and conflicts.</li>
+    <li><b>What department or stage comes next?</b> Pipeline suggestions when a stage is finished.</li>
+    <li><b>Am I going to finish on time?</b> The planner's forecast, capacity and deficit.</li>
+    <li><b>What changed?</b> Every item keeps a timestamped history; Reports and the Time log summarise the week.</li>
+  </ul>
+  <div class="callout">Everything is rule-based and runs on your machine. There is no AI service behind the suggestions, no network calls and no account. Same project in, same answer out.</div>
+</section>
+
+<section class="chapter" id="c2">
+  <h2>2 · Install and first launch</h2>
+  <h3>Portable version</h3>
+  <div class="step"><b>1</b><div>Put <b>Crucible.exe (from Crucible-0.7.0-portable.zip)</b> anywhere (Desktop, a tools folder, a USB stick).</div></div>
+  <div class="step"><b>2</b><div>Double-click it. The first time, Windows SmartScreen shows "Windows protected your PC" because the file is not code-signed. Click <b>More info</b>, then <b>Run anyway</b>. This happens once.</div></div>
+  <div class="step"><b>3</b><div>Crucible opens with a sample project called <i>Forgotten Temple</i> so you can see a project mid-flight. Replace it with your own from <b>Project Settings → New project…</b> (chapter 16).</div></div>
+  <h3>Installer version</h3>
+  <p>If you received <b>Crucible_0.7.0_x64-setup.exe</b> instead, run it: it installs for your user only (no admin rights), adds a Start Menu entry and an uninstaller. Both versions store data in the same place, so you can switch between them.</p>
+  <h3>Requirements</h3>
+  <ul>
+    <li>Windows 10 or 11 (64-bit). The app uses the WebView2 runtime that every up-to-date Windows already has.</li>
+    <li>About 4 MB of disk space plus your screenshots.</li>
+    <li>No internet connection is needed, ever.</li>
+  </ul>
+</section>
+
+<section class="chapter" id="c3">
+  <h2>3 · The window: rail, header, shortcuts</h2>
+  <div class="grid2">
+    <div>
+      <figure class="half" style="margin-top:0"><img src="shots/19-sidebar.png" alt="The rail"><figcaption>The rail (left side).</figcaption></figure>
+    </div>
+    <div>
+      <h3 style="margin-top:0">The rail</h3>
+      <p>Top: the project name, its health (ON TRACK / AT RISK / LATE / CRITICAL), the current day and overall progress.</p>
+      <p><b>PROJECT</b>: Dashboard, Today, Planner, Timeline, Backlog. The small numbers on the right are live: today's day number, how many days late the forecast is, how many backlog items you have.</p>
+      <p><b>PRODUCTION</b>: only the departments <i>in use</i>, each with a progress bar. The <b>+</b> opens the department picker (chapter 9). A dashed line separates production departments from finalization ones (Optimization, QA, Final Build…). When a department is finished, a teal "Next:" hint appears here.</p>
+      <p><b>MANAGEMENT</b>: Bugs / Issues (with the open-bug count), Search, Time log, Reports.</p>
+      <p><b>SETTINGS</b>: Project Settings.</p>
+    </div>
+  </div>
+  <h3>The header</h3>
+  <figure><img src="shots/18-header.png" alt="Header"><figcaption>Screen title · project · day · health · search bar · day stepper · calendar date · Today.</figcaption></figure>
+  <ul>
+    <li><b>Search bar</b>: type anything and Crucible jumps to the Search screen with results (chapter 13). <kbd>Esc</kbd> clears it.</li>
+    <li><b>‹ Day 9 ›</b>: step the current day back or forward. The current day is the day the whole app reasons about ("today").</li>
+    <li><b>Date field</b>: jump to a calendar date inside the project.</li>
+    <li><b>Today</b>: set the current day from your PC's real date. Turn on "Follow the real calendar" in Settings to do this automatically on launch.</li>
+  </ul>
+  <h3>Keyboard shortcuts</h3>
+  <table>
+    <tr><th>Key</th><th>Does</th></tr>
+    <tr><td><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> <kbd>5</kbd> <kbd>6</kbd></td><td>Dashboard · Today · Planner · Backlog · Bugs · Time log</td></tr>
+    <tr><td><kbd>/</kbd></td><td>Search (focuses the search bar)</td></tr>
+    <tr><td><kbd>+</kbd></td><td>Add department</td></tr>
+    <tr><td><kbd>F</kbd></td><td>Focus mode on the current item (chapter 23)</td></tr>
+    <tr><td><kbd>C</kbd></td><td>Capture a thought into the backlog</td></tr>
+    <tr><td><kbd>Esc</kbd></td><td>Close the item window, Focus mode or any dialog</td></tr>
+    <tr><td><kbd>Enter</kbd> in "What did you do?"</td><td>Save the item</td></tr>
+    <tr><td><kbd>Ctrl</kbd>+<kbd>V</kbd> in the item window</td><td>Paste an image from the clipboard as a screenshot</td></tr>
+  </table>
+  <p class="muted">Shortcuts are ignored while you are typing in a field.</p>
+</section>
+
+<section class="chapter" id="c4">
+  <h2>4 · The ideas behind it (read this once)</h2>
+  <h3>Project, days and capacity</h3>
+  <p>A project has a start date, a duration in days (14 to 365, any number) and a number of working hours per day, on the weekdays you choose. Day 1 is the start date. Duration × hours/day on working days is your <b>capacity</b>. Everything else is measured against it.</p>
+  <h3>Departments</h3>
+  <p>A department is a lane of work: Game Design, Modeling, UV, Texturing, Audio, QA… Each has a <b>weight</b> (its share of overall project progress; weights in use should add up to 100) and a position in the pipeline order. Departments can be <b>parked</b>: hidden and ignored by progress, health and the planner, with all their items kept safe. A catalog of about forty standard departments is built in; you can also create your own.</p>
+  <h3>Work items</h3>
+  <p>One kind of record for everything. An item has a <b>type</b> (TASK, ASSET, BUG, DESIGN, MODELING, QA…), a <b>department</b>, an optional <b>parent</b> (so an asset can have stages under it, and a bug can hang off the stage where you found it), an <b>estimate</b> in hours, <b>logged time</b>, <b>progress</b> and a <b>remaining</b> figure, a <b>status</b>, a <b>priority</b>, an optional <b>class</b>, and for bugs a <b>severity</b>. Every change is written to the item's <b>history</b> with a timestamp; nothing is ever silently overwritten.</p>
+  <table>
+    <tr><th>Field</th><th>Values</th><th>Meaning</th></tr>
+    <tr><td>Status</td><td>BACKLOG · PLANNED · TODO · IN PROGRESS · BLOCKED · DONE · CUT</td><td>BACKLOG = known but not on the plan (does not count anywhere). PLANNED/TODO = on a day. DONE requires all <i>required</i> checklist steps and child items to be done.</td></tr>
+    <tr><td>Priority</td><td>MUST HAVE · NICE TO HAVE · CUT</td><td>Only MUST HAVE work drives health, overdue and the forecast. CUT is kept but ignored.</td></tr>
+    <tr><td>Class</td><td>S · A · B · C · D</td><td>Importance for ordering, independent of priority. S is critical, D is minor. Bugs default to S/A/C/D from their severity.</td></tr>
+    <tr><td>Severity</td><td>CRITICAL · HIGH · MEDIUM · LOW</td><td>Bugs only. Critical/high bugs are MUST HAVE and count against project health.</td></tr>
+    <tr><td>Estimate / Logged / Remaining</td><td>hours</td><td>Remaining = estimate × (1 − progress), unless you type a remaining figure yourself. Logged is the sum of your time entries.</td></tr>
+    <tr><td>Progress</td><td>0–100 %</td><td>Your judgement. DONE forces 100. Parents show the estimate-weighted average of their children.</td></tr>
+  </table>
+  <h3>Pipelines, stages and checklists</h3>
+  <p>Each department owns a <b>pipeline</b>: an ordered list of stages with default estimates (Reference → Blockout → Modeling → UV → Texturing → …). When you create an <b>asset</b> in a department, the pipeline becomes that asset's child items, chained so each stage depends on the previous one. A stage whose name matches another department in use (UV, Texturing, LOD…) is filed in that department, so department progress follows the asset's checklist. Ticking a stage in a checklist marks the real item DONE.</p>
+  <h3>Planned vs. logged</h3>
+  <p>The planner books hours onto days. When you log time, Crucible compares what was booked with what happened. Estimates that keep running over are flagged as a risk.</p>
+</section>
+
+<section class="chapter" id="c5">
+  <h2>5 · Dashboard</h2>
+  <figure><img src="shots/01-dashboard.png" alt="Dashboard"><figcaption>Dashboard of the sample project, Day 9 of 14.</figcaption></figure>
+  <p>The Dashboard is made to be read in ten seconds. Top to bottom:</p>
+  <ul>
+    <li><b>Today's focus</b>: the item you are working on (in progress, or the best candidate): progress, logged, remaining, slack, and Continue.</li>
+    <li><b>Next step</b>: what Crucible recommends, with the reasons, one button to act on it, and alternatives below. Chapter 9 explains where this comes from.</li>
+    <li><b>Project status</b>: progress (the small tick on the bar is elapsed time; if the tick is ahead of the bar you are behind), remaining work, the forecast finish day with how many days late or early, capacity used vs. available, and health with its main reason.</li>
+    <li><b>Risks</b>: capacity deficit, late forecast, overdue must-have items (with slack vs. no slack), blockers, high bugs, performance below target, planner conflicts. Click one to open the item.</li>
+    <li><b>Department status</b>: every department in use with progress and state. Click to open it.</li>
+    <li><b>Upcoming</b>: the next production gate (game profiles), the next department the pipeline suggests, the nearest deadline.</li>
+  </ul>
+</section>
+
+<section class="chapter" id="c6">
+  <h2>6 · Today</h2>
+  <figure><img src="shots/02-today.png" alt="Today"><figcaption>Today: current, next and optional work, the next step, unfinished items and the logging table.</figcaption></figure>
+  <ul>
+    <li><b>Today's work</b>: three rows: Current (the item you are on), Next (best must-have), Optional (best nice-to-have). Each shows estimate, logged, remaining and progress. Click a row to open it.</li>
+    <li><b>Quick actions</b> on the current item: + Log time, + Comment, + Screenshot, + Child task, + Bug. The fastest way to record work without opening anything.</li>
+    <li><b>Next step</b>: the same recommendation as the Dashboard, compact.</li>
+    <li><b>Unfinished</b>: items planned to end yesterday or earlier that are not done, and critical blockers. "Replan from today" re-spreads open work over the remaining days.</li>
+    <li><b>Planned today · log hours &amp; progress</b>: every item booked on the current day, with a log row: hours, percent, note, Log. Press <kbd>Enter</kbd> in the note field to log. Status and priority can be changed inline; "Complete" appears when an item can be finished. Double-click a row to open it.</li>
+    <li><b>New work discovered</b>: a capture box. Anything you type goes to the backlog for later scheduling.</li>
+    <li><b>Low-energy day</b> (switch at the top right) and the <b>Focus</b> button: see chapter 23.</li>
+  </ul>
+</section>
+
+<section class="chapter" id="c7">
+  <h2>7 · The item window (tasks and bugs)</h2>
+  <figure><img src="shots/09-item-window.png" alt="Item window"><figcaption>An item opens in its own window: left column, fields on top, tabs below.</figcaption></figure>
+  <p>Open an item by <b>double-clicking its row</b> anywhere, clicking its title, or from a Next-step button. In the installed app each item opens as a separate window, so you can keep one open beside the main window; changes sync between windows the moment you Save.</p>
+  <h3>Left column</h3>
+  <ul>
+    <li><b>Task / bug name</b> and <b>Description</b>.</li>
+    <li>For bugs: <b>Location</b> (level, engine path, asset) and <b>Reproduction</b> steps.</li>
+    <li><b>Tags</b>, comma-separated.</li>
+    <li><b>Comments</b>: press <b>+</b> to write one. Each comment shows the day and the date-time it was written and when it was last edited.</li>
+  </ul>
+  <h3>Fields (top right)</h3>
+  <p>Type, Class, Severity, Status, Priority, Department, Parent, Planned start/end (day and calendar date), Pin start, Deadline, Lock. These apply as soon as you change them.</p>
+  <h3>Time and progress</h3>
+  <p>Estimate, Actual (logged), Remaining, Progress with a slider. Below it, the <b>+ hours</b> and <b>What did you do?</b> fields log a time entry. The grey text shows what the planner thinks is left and whether the item is on the critical path.</p>
+  <div class="callout"><b>Save model.</b> Name, description, tags, hours, progress, a new comment and new screenshots are <i>drafts</i> until you press <b>Save</b> (the button shows a dot while something is unsaved). Closing with unsaved changes asks first. Dropdowns and the Lock box apply immediately. <b>Mark DONE</b> is enabled only when every required step and child item is finished.</div>
+  <h3>Tabs</h3>
+  <ul>
+    <li><b>Screenshot</b>: the latest screenshot fills the area; thumbnails below switch between them. No screenshot yet? Click the dashed square, or paste an image with <kbd>Ctrl</kbd>+<kbd>V</kbd>. Image files are stored next to your project file; linked files and folders (+ File, + Folder) are only referenced and can be opened or revealed from here.</li>
+    <li><b>Children</b>: stages, sub-tasks and bugs under this item, as a checklist. Add a child, add a bug, or apply a pipeline template. "Save as template" turns the current children into a reusable template.</li>
+    <li><b>Steps</b>: a lightweight checklist inside the item. Steps marked REQ gate DONE; steps can carry a day.</li>
+    <li><b>Deps &amp; blockers</b>: dependencies (must finish first) and blockers with severity. A blocker never changes status by itself; set the item BLOCKED when you cannot continue.</li>
+    <li><b>History</b>: the complete thread: created, time, progress, comments, screenshots, status, estimate, schedule, priority, class, severity, department moves. Nothing is deleted from it.</li>
+  </ul>
+  <figure><img src="shots/11-bug-window.png" alt="Bug window"><figcaption>A bug uses the same window with Location and Reproduction fields and a severity.</figcaption></figure>
+</section>
+
+<section class="chapter" id="c8">
+  <h2>8 · Departments</h2>
+  <figure><img src="shots/06-department.png" alt="Department"><figcaption>A department: header stats, next step, and the work-item table with filters.</figcaption></figure>
+  <h3>Header</h3>
+  <p>Progress, status (NOT STARTED / IN PROGRESS / BLOCKED / COMPLETE), remaining hours, and the buttons:</p>
+  <ul>
+    <li><b>+ Asset</b>: creates a parent item and applies the department pipeline as its stages. The normal way to start a prop, a character, a level.</li>
+    <li><b>+ Item</b>: a single task planned for today.</li>
+    <li><b>Pipeline</b>: opens the pipeline editor (below).</li>
+    <li><b>Park</b>: hide the department without deleting anything.</li>
+  </ul>
+  <h3>Work items: three views</h3>
+  <ul>
+    <li><b>List</b>: a tree: assets with their stages indented. Inline class, day, priority, progress, estimate / actual / left, status. Double-click a row to open it. Sort by tree, day, estimate, progress or newest.</li>
+    <li><b>Kanban</b>: Backlog · To do · In progress · Blocked · Done. Drag a card to change its status (dragging from Backlog to To do schedules it for today).</li>
+    <li><b>Checklists</b>: one card per asset with its stages as tick boxes. Ticking completes the real stage item; the current stage is highlighted.</li>
+  </ul>
+  <p>Filters: search, Open / All / Backlog / Done / Bugs, priority, class, type.</p>
+  <figure><img src="shots/07-kanban.png" alt="Kanban"><figcaption>Kanban view of the same department.</figcaption></figure>
+  <h3>Pipeline editor</h3>
+  <figure><img src="shots/08-pipeline-editor.png" alt="Pipeline editor"><figcaption>Each department's pipeline: rename, re-estimate, reorder, skip, remove, add stages; reset to the catalog default; save as a template.</figcaption></figure>
+  <p>Edits apply to assets you create from now on; existing assets keep their stages. A skipped stage stays in the list but is not applied. "Save as template" makes the pipeline available in every item's "Apply pipeline template" list.</p>
+  <h3>Special panels</h3>
+  <p>Game-profile projects get extra panels: <b>Integration</b> shows "fully playable", <b>Optimization</b> has the performance fields (current FPS, CPU/GPU ms, memory) against the target, <b>Final Build</b> shows the six production gates.</p>
+</section>
+
+<section class="chapter" id="c9">
+  <h2>9 · Adding a department and the next-step engine</h2>
+  <h3>The department picker</h3>
+  <figure><img src="shots/16-department-picker.png" alt="Department picker"><figcaption>PRODUCTION + opens the picker.</figcaption></figure>
+  <ul>
+    <li><b>Recommended for this project</b>: departments the project description suggests, plus the next stage of the pipeline when a department is complete (marked "next stage").</li>
+    <li><b>Other departments</b>: the rest of the catalog. Parked departments appear here too and say so.</li>
+    <li><b>Custom department</b>: your own name, in Production or Finalization.</li>
+    <li><b>Connect it to production</b> (ticked by default): when the new department joins, existing stages that carry its name are filed into it, every asset that has no such stage gets one (depending on the asset's last stage), and those stages are put on the plan from today. Untick to add an empty department.</li>
+    <li><b>In use — park one</b>: park a department from here.</li>
+  </ul>
+  <p>Nothing is added silently: you press Add. Then the impact appears.</p>
+  <h3>The impact banner</h3>
+  <figure><img src="shots/17-impact-banner.png" alt="Impact banner"><figcaption>After adding a department: new work, planner impact, forecast before → after, critical path, capacity.</figcaption></figure>
+  <p>The numbers are a preview: existing items only move when you apply a plan in the Planner. "Review plan" takes you there.</p>
+  <h3>How the next step is chosen</h3>
+  <p>Deterministic rules, in this order. The first one that applies is <i>the</i> next step; the rest are listed as alternatives.</p>
+  <ol>
+    <li><b>Resolve a critical blocker</b> on must-have or critical-path work.</li>
+    <li><b>Continue</b> an item already in progress.</li>
+    <li><b>Start / schedule the next stage</b> of an asset whose previous stage is done ("Modeling is complete").</li>
+    <li><b>Start</b> the highest-ranked actionable item (class, priority, critical path, gate need, overdue, deadline, severity all score).</li>
+    <li><b>Start a department</b> that follows a completed one in the pipeline and is in use but not started.</li>
+    <li><b>Add a department</b> that follows a completed one but is not in use yet. You can <b>Ignore</b> these; ignored suggestions can be restored in Settings.</li>
+    <li><b>Replan</b> when must-have work is overdue.</li>
+    <li><b>Capture work</b> when there is nothing to do.</li>
+  </ol>
+</section>
+
+<section class="chapter" id="c10">
+  <h2>10 · Planner</h2>
+  <figure><img src="shots/03-planner.png" alt="Planner"><figcaption>Planner: duration, capacity, auto-schedule preview, conflicts, critical path, advisor, departments.</figcaption></figure>
+  <h3>Duration &amp; capacity</h3>
+  <p>Presets 14 · 21 · 30 · 45 · 60 · 90 · 180 · 365 or a custom length. Shortening never deletes work: items past the new end are pulled back to the last day and listed first so you can confirm. Capacity left, remaining work, deficit and forecast are shown; a deficit opens the recovery options: extend, raise hours/day, reduce nice-to-have work. You choose.</p>
+  <h3>Auto-schedule</h3>
+  <p>The planner takes every open item (not backlog, not parked, not cut), sorts it by critical path → class → priority → gate need → deadline → department order → slack, keeps dependencies in order, then fills the days: pinned items on their day, everything else forward from today, spilling multi-hour items across days by real capacity. Locked and DONE items never move. The preview shows items placed, hours, the critical path, conflicts and a bar per day (amber = over capacity). <b>APPLY PLAN</b> writes the days onto the items and records a schedule entry in each history. "Write day objectives" fills the Timeline objectives from the departments worked each day.</p>
+  <h3>Conflicts</h3>
+  <p>Things the planner refuses to hide: capacity deficit, a missed deadline, a pin on an overloaded or non-working day, a pin before its dependency, a dependency loop, work that could not be placed. Each names the item and the reason.</p>
+  <h3>Critical path &amp; slack</h3>
+  <p>Zero-slack items are listed in order; any delay on them moves the end date. Items with little slack are named below.</p>
+  <h3>Advisor</h3>
+  <p>Plain-language checks with one-click fixes: weights not summing to 100, parked departments with open work, keyword-based department suggestions from your description, missing estimates, extend/shorten the duration to fit the work, overdue → replan, an overloaded day, blank objectives.</p>
+  <h3>Departments table</h3>
+  <p>In use, order (▲▼), name, weight, group, description, item count. Normalize weights to 100, load a preset, add from the catalog, or remove a department (its items move to a neighbour; parking is safer).</p>
+</section>
+
+<section class="chapter" id="c11">
+  <h2>11 · Timeline and Backlog</h2>
+  <figure><img src="shots/04-timeline.png" alt="Timeline"><figcaption>Timeline: one card per day with its objective, must-have progress and items; weeks for long projects.</figcaption></figure>
+  <p>Each day card has an editable objective, the must-have completion bar, the items ending that day with a day selector to move them, and any dated checklist steps. "+ Add task" creates an item on that day.</p>
+  <figure><img src="shots/05-backlog.png" alt="Backlog"><figcaption>Backlog: unscheduled work.</figcaption></figure>
+  <p>Capture known work fast (title, type, class, priority, department, estimate) without giving it a day. Backlog items are not counted in progress, health or the forecast until you schedule them with "Schedule on" or the planner. Sort by class, priority, department, estimate or created.</p>
+</section>
+
+<section class="chapter" id="c12">
+  <h2>12 · Bugs / Issues</h2>
+  <figure><img src="shots/10-bugs.png" alt="Bugs"><figcaption>Bugs from every department in one place.</figcaption></figure>
+  <p>A bug is an ordinary work item with type BUG. It can live at the top level or under the asset or stage where you found it (then "Related to" shows the parent). The counters at the top show open bugs by severity and their remaining hours, and whether they currently affect project health.</p>
+  <p><b>Log a bug</b>: title, severity, related item (optional), department, reproduction notes. Critical and high bugs become MUST HAVE and are planned for today; medium and low are NICE TO HAVE. Screenshots go in the bug's window.</p>
+  <p>The table below is the search component (chapter 13) locked to bugs. Double-click a row to open the bug window.</p>
+</section>
+
+<section class="chapter" id="c13">
+  <h2>13 · Search</h2>
+  <figure><img src="shots/12-search.png" alt="Search"><figcaption>Search across every department with filters.</figcaption></figure>
+  <p>Type in the header search bar from any screen, or press <kbd>/</kbd>. Matches on title (ranked first), the parent's title, description, location, reproduction notes, tags, id and department name. Several words must all match.</p>
+  <p><b>Filters:</b> type · plan state (Open, All, Unscheduled, Planned, Planned today, Overdue, In progress, Blocked, Done) · priority · department · class · severity · planned day from–to · created date from–to · leaves only (hide parents) · sort (relevance, newest, oldest, planned day, estimate, remaining, progress, severity, class). Filters are remembered per screen. The line on the right counts results and remaining hours.</p>
+</section>
+
+<section class="chapter" id="c14">
+  <h2>14 · Time log</h2>
+  <figure><img src="shots/20-timelog.png" alt="Time log"><figcaption>Everything you logged: by day, by type, by department, by item, and every entry.</figcaption></figure>
+  <p>Every "+ hours" you log, from Today or an item window, becomes a time entry with a day, a timestamp and a note. The Time log screen adds them up so you can see where your hours actually went.</p>
+  <ul>
+    <li><b>Totals</b>: logged hours in the range, split into tasks &amp; assets vs. bugs, the number of days with time (and the average per day), and the number of entries.</li>
+    <li><b>Range</b>: Today, Last 7 days, Whole project, or a custom day range. Filter by type and department, or search the item name and note.</li>
+    <li><b>Chart</b>: hours per day; the dashed line is your hours/day setting, amber bars went over it, the teal bar is today.</li>
+    <li><b>By day · By type · By department · By item</b>: ranked breakdowns. Click an item to open it.</li>
+    <li><b>Entries</b>: the full list, newest first, with the note you wrote. Double-click a row to open the item. Negative entries are corrections.</li>
+  </ul>
+  <div class="callout">Time is never edited in place. To correct a mistake, log a negative amount on the same item (for example −1) with a note; both entries stay in the history.</div>
+</section>
+
+<section class="chapter" id="c15">
+  <h2>15 · Reports</h2>
+  <figure><img src="shots/13-reports.png" alt="Reports"><figcaption>Weekly report with exports, plan vs actual by department, and the activity stream.</figcaption></figure>
+  <ul>
+    <li><b>Weekly report</b>: pick a week: progress, health, planned vs actual hours, remaining, forecast, completed, new, bugs created / fixed, blockers, departments, critical path, major changes, risks and recommendations. Export as <b>Markdown</b>, <b>HTML</b>, <b>Print / PDF</b>, <b>CSV</b> (all items, for Excel) or <b>JSON</b>.</li>
+    <li><b>Plan vs actual by department</b>: booked hours against logged hours for the week, with variance and progress.</li>
+    <li><b>Activity</b>: every time entry, comment, screenshot, status change and creation in the week, newest first.</li>
+  </ul>
+</section>
+
+<section class="chapter" id="c16">
+  <h2>16 · Project Settings and the New Project wizard</h2>
+  <figure><img src="shots/14-settings.png" alt="Settings"><figcaption>Project Settings.</figcaption></figure>
+  <ul>
+    <li><b>Project</b>: name, description (it drives department recommendations), type, profile (Game, Asset library, Level, Minimal, Custom), engine, platform, target FPS.</li>
+    <li><b>Duration &amp; capacity</b>: start date, duration, hours per day, working days, current day, calendar date, "Follow the real calendar".</li>
+    <li><b>Projects</b>: every project stored on this PC — Open, Delete (moved to a trash folder, never destroyed). See chapter 21.</li>
+    <li><b>Data</b>: Export JSON, Import JSON, Reset to defaults (blank 30-day project with the standard departments and one clean pipeline item each), Reset to sample project, Add template to each department, Restore ignored suggestions. The line below shows where the open project is saved.</li>
+    <li><b>Claude connector</b>: the two setup snippets for Claude Code and the Claude desktop app. See chapter 22.</li>
+  </ul>
+  <h3>New project wizard</h3>
+  <figure><img src="shots/15-wizard.png" alt="New project wizard"><figcaption>Five steps; nothing is created until the last one.</figcaption></figure>
+  <ol>
+    <li><b>Basic info</b>: name, description, type, profile, engine, platform, start date, hours/day, duration (presets or custom), working days.</li>
+    <li><b>Production structure</b>: the departments recommended from your description, each with the reason. Untick what you don't need; add optional ones.</li>
+    <li><b>Pipeline templates</b>: each department's pipeline, editable; choose which departments get a starter item; optionally list your first assets (one per line) and they are created with the Environment or Modeling pipeline.</li>
+    <li><b>Planner</b>: estimated work, capacity, conflicts, critical path and forecast for the project as it would be created.</li>
+    <li><b>Review</b>: summary, then <b>Create project</b>. The new project is added next to the current one and opened. Tick "Replace the current project instead" if you really want to overwrite it (export first).</li>
+  </ol>
+</section>
+
+<section class="chapter" id="c17">
+  <h2>17 · A normal working day</h2>
+  <div class="step"><b>1</b><div>Open Crucible. Press <b>Today</b> in the header if the day is not right (or let it follow the calendar).</div></div>
+  <div class="step"><b>2</b><div>Read the Dashboard: focus, next step, health. Ten seconds.</div></div>
+  <div class="step"><b>3</b><div>Go to <b>Today</b> and start on the Current row. Work.</div></div>
+  <div class="step"><b>4</b><div>When you stop, record it: hours and a one-line note in the log row (or in the item window: + hours, What did you do?, a screenshot of the result, <b>Save</b>). Adjust the progress slider honestly.</div></div>
+  <div class="step"><b>5</b><div>Found a problem? <b>+ Bug</b> on Today, or "Create bug" from the item. It lands under the item you were on.</div></div>
+  <div class="step"><b>6</b><div>Finished a stage? Tick it in the checklist or Mark DONE. The next stage becomes the next step; if it belongs to a department you have not added yet, the picker offers it with the plan impact.</div></div>
+  <div class="step"><b>7</b><div>Something slipped? "Replan from today" on Today or the Dashboard, or APPLY PLAN in the Planner. Read the forecast. If it is red, choose a recovery option; Crucible never cuts work for you.</div></div>
+  <div class="step"><b>8</b><div>End of the day: check the Time log to see where the hours went. End of the week: Reports → export or print the weekly report.</div></div>
+</section>
+
+<section class="chapter" id="c18">
+  <h2>18 · Your data: where it lives, backups, sharing</h2>
+  <ul>
+    <li>Each project is one file, <b>project.json</b>, in its own folder: <b>%APPDATA%\dev.armaan.crucible\projects\&lt;id&gt;\</b>. Its screenshots are in an <b>attachments</b> folder inside that project folder. Linked files and folders stay where they are; only their paths are kept.</li>
+    <li>Crucible saves automatically a quarter of a second after every change and keeps the previous version as <b>project.json.bak</b>.</li>
+    <li><b>Backup</b>: Settings → Export JSON writes a copy anywhere you like. Do this before Reset or Import.</li>
+    <li><b>Move to another PC</b>: export, copy the JSON (and the attachments folder if you want the screenshots), import there.</li>
+    <li><b>Old files</b>: projects from earlier Crucible versions open fine; they are upgraded in place and nothing is dropped. Upgrading from 0.4 moves your single project into the new <b>projects</b> folder on first launch; old screenshots stay where they were and keep working.</li>
+    <li><b>Deleted projects</b> go to <b>projects\_trash</b>; copy the folder back out to restore one.</li>
+    <li>No data ever leaves your computer.</li>
+  </ul>
+</section>
+
+<section class="chapter" id="c19">
+  <h2>19 · Questions and answers</h2>
+  <h4>Why is my department at 0 % when I have done work?</h4>
+  <p>Only items on the plan count. Backlog items (including the "— template" items) are ignored until they get a day. Also check the department is not parked.</p>
+  <h4>Mark DONE is greyed out.</h4>
+  <p>The item still has required steps (Steps tab, marked REQ) or open child items. Finish or cut them, or untick REQ on a step you do not need.</p>
+  <h4>Remaining hours look wrong after I logged time.</h4>
+  <p>Remaining is derived from progress, not from logged time. Move the progress slider, or type a remaining figure directly.</p>
+  <h4>The forecast is later than the project end.</h4>
+  <p>That is the planner being honest: open must-have work does not fit the remaining capacity. Extend the duration, raise hours per day, defer nice-to-have work, or accept the risk.</p>
+  <h4>I added a department but the items did not move.</h4>
+  <p>The impact banner is a preview. Go to the Planner and APPLY PLAN to write new days onto the items.</p>
+  <h4>A suggestion keeps coming back.</h4>
+  <p>Press Ignore on it. Ignored suggestions can be restored in Settings → Data.</p>
+  <h4>Where did my "Open" button go?</h4>
+  <p>Double-click any row, or click the title.</p>
+  <h4>Can two people use it?</h4>
+  <p>Not at the same time. Share the JSON export; team fields exist in the data for a future version.</p>
+</section>
+
+<section class="chapter" id="c20">
+  <h2>20 · Feature checklist</h2>
+  <table class="check">
+    <tr><th>Area</th><th>Features</th></tr>
+    <tr><td>Project</td><td>Name, description, type, profile, engine, platform, target FPS · start date · duration 1–365 days with presets · hours/day · working days · current day and calendar date · follow real calendar</td></tr>
+    <tr><td>Departments</td><td>Catalog of ~40 · presets (game, asset library, minimal) · custom departments · weights and normalize to 100 · order · production / finalization groups · park / un-park · remove with item move · recommendation from description · next-stage suggestion</td></tr>
+    <tr><td>Pipelines</td><td>Per-department editable stages (add, rename, estimate, type, reorder, skip, remove, reset) · save as template · apply as asset checklist · stages filed into matching departments · reveal / extend / schedule stages when a department is added</td></tr>
+    <tr><td>Work items</td><td>Types task / asset / bug / design / modeling / gameplay / improvement / polish / QA / future · parent-child hierarchy with rollups · status, priority, class, severity · estimate, logged, remaining, progress · planned start/end, pin, deadline, lock · dependencies · blockers · tags · checklist steps with day and required flag · location and reproduction for bugs · comments with edit history · screenshots (file or paste) · linked files and folders (open / reveal) · full timestamped history · delete with children</td></tr>
+    <tr><td>Item window</td><td>Separate window per item (installed app) · draft-then-Save · Mark DONE with gate · Screenshot / Children / Steps / Deps &amp; blockers / History tabs · apply pipeline template · save children as template</td></tr>
+    <tr><td>Planning</td><td>Deterministic scheduler with real capacity · critical path and slack · dependencies · pins, locks, deadlines honoured · conflicts explained · open-from-today or everything-from-day-1 · frozen per-day bookings · day objectives · forecast, variance, deficit · recovery options · advisor rules · add-department impact preview</td></tr>
+    <tr><td>Daily</td><td>Today's focus · next-step engine with reasons and Ignore · current / next / optional · quick actions (time, comment, screenshot, child, bug) · unfinished carry-over · replan from today · logging table · quick capture · Focus mode with timer · low-energy day · capture key</td></tr>
+    <tr><td>Reading</td><td>Fonts: system, Atkinson Hyperlegible, OpenDyslexic · text size · line and letter spacing · dark, warm and paper themes · calm labels · reduced motion · "Break it down" step suggestions</td></tr>
+    <tr><td>Time</td><td>Time entries with day, timestamp and note · totals by day / type / department / item · today, last 7 days, whole project or custom range · hours-per-day chart against your daily capacity · corrections by negative entries</td></tr>
+    <tr><td>Views</td><td>Dashboard · Today · Planner · Timeline (days / weeks) · Backlog · Department list / kanban (drag) / checklists with filters and sort · Bugs · Search with 11 filters · Time log · Reports</td></tr>
+    <tr><td>Reports</td><td>Weekly report (progress, health, planned vs actual, completed, new, bugs, blockers, departments, critical path, changes, risks, recommendations) · Markdown, HTML, print/PDF, CSV, JSON · plan vs actual by department · activity stream</td></tr>
+    <tr><td>Data</td><td>Several projects side by side (switch, open, delete to trash) · auto-save with .bak · export / import JSON · schema upgrades from older versions · reset to defaults or sample · templates saved with the project · local only</td></tr>
+    <tr><td>Claude</td><td>Local connector (MCP) for Claude Code and the Claude desktop app: create projects, add departments, create tasks / assets / bugs, update, set status and progress, log time, comment, run the planner, read health, next steps, today, search</td></tr>
+    <tr><td>Keyboard</td><td>1–6 screens · / search · + add department · F focus · C capture · Esc close · Enter to save/log · paste image</td></tr>
+  </table>
+  <p class="muted">Crucible 0.7 · © 2026 Armaan · All rights reserved. Compiled builds are shared for personal use; the software is not open source.</p>
+</section>
+
+<section class="chapter" id="c21">
+  <h2>21 · Several projects</h2>
+  <figure><img src="shots/21-projects.png" alt="Projects table in Settings"><figcaption>Project Settings → Projects: everything stored on this PC.</figcaption></figure>
+  <p>Crucible keeps as many projects as you like, each in its own folder. One is open at a time.</p>
+  <ul>
+    <li><b>Create</b>: Project Settings → <b>New project…</b> (the wizard). The new project is added and opened; the one you were in stays as it was.</li>
+    <li><b>Switch</b>: click the project name at the top of the rail — it becomes a drop-down as soon as you have more than one project — or press <b>Open</b> in the Projects table. Item windows of the previous project can stay open; they keep saving to that project.</li>
+    <li><b>Delete</b>: the Projects table. The folder is moved to <b>projects\_trash</b>, so nothing is lost. The open project can only be deleted when another one exists.</li>
+    <li>Import JSON, Reset to defaults and Reset to sample still act on the <b>open</b> project.</li>
+  </ul>
+</section>
+
+<section class="chapter" id="c22">
+  <h2>22 · The Claude connector</h2>
+  <figure><img src="shots/22-connector.png" alt="Claude connector box in Settings"><figcaption>Project Settings → Claude connector: copy one of the two snippets.</figcaption></figure>
+  <p>The download contains a second file, <b>crucible-mcp.cjs</b>. It is a small local program (an MCP server) that lets Claude work inside your Crucible data from any chat: "create a 60-day asset-pack project with these departments", "log these playtest notes as bugs with severity", "what should I do today?", "log 2 hours on the altar model". Claude Code and the Claude desktop app both support it.</p>
+  <h3>Setup</h3>
+  <div class="step"><b>1</b><div>Install <b>Node.js 18 or newer</b> (nodejs.org) if you do not have it. Claude Code already needs it.</div></div>
+  <div class="step"><b>2</b><div>Keep <b>crucible-mcp.cjs</b> next to <b>Crucible.exe</b>. The Settings box shows "connector file found" when it is in place.</div></div>
+  <div class="step"><b>3</b><div><b>Claude Code</b>: copy the first snippet and run it once in a terminal. <b>Claude desktop app</b>: copy the second snippet into Settings → Developer → Edit config (<i>claude_desktop_config.json</i>) and restart the app.</div></div>
+  <div class="step"><b>4</b><div>Ask Claude for something. It sees the projects on this PC and works on the current one unless you name another.</div></div>
+  <h3>What it can do</h3>
+  <table class="check">
+    <tr><th>Read</th><th>Write</th></tr>
+    <tr><td>list projects · project summary · search items · one item with history · health and forecast · next steps · today's ranked work · recommended departments</td><td>create project (departments from the description, or ones you name, with pipeline templates and first assets) · add department (returns the plan impact) · create task / asset with pipeline / bug · update fields · set status · set progress · log time · add comment · run the planner (open or all)</td></tr>
+  </table>
+  <h3>How it stays safe</h3>
+  <ul>
+    <li>Everything runs on your machine. The connector reads and writes the same project files as the app; no server, no account, nothing leaves the PC.</li>
+    <li>Every change it makes is written into the item history with author <b>Claude</b>; items it creates carry the tag <b>via-claude</b>, so you can search for them.</li>
+    <li>Crucible notices the file change within about two seconds and reloads. If you were typing at that exact moment, the app keeps the file's version and tells you.</li>
+    <li>The connector cannot delete projects or items.</li>
+  </ul>
+</section>
+
+<section class="chapter" id="c23">
+  <h2>23 · Reading &amp; focus: fonts, themes, Focus mode, low-energy days</h2>
+  <figure><img src="shots/23-reading.png" alt="Reading & focus in Project Settings"><figcaption>Project Settings → Reading &amp; focus. Every choice applies at once, everywhere, and is remembered on this PC.</figcaption></figure>
+  <p>Crucible is built to be usable on days when reading is hard and days when starting is hard. None of this changes what the app does with your project; it changes how it reads and how much of it you see at once. There is no wrong setting.</p>
+  <h3>Reading preferences (Project Settings → Reading &amp; focus)</h3>
+  <table>
+    <tr><th>Setting</th><th>What it does</th></tr>
+    <tr><td>Font</td><td><b>System default</b>, <b>Atkinson Hyperlegible</b> (letters that are hard to confuse: I / l / 1, O / 0) or <b>OpenDyslexic</b> (heavier bottoms so letters do not flip). Both are bundled, no download.</td></tr>
+    <tr><td>Theme</td><td><b>Dark</b> (default), <b>Warm</b> (dark with softer contrast and less blue) or <b>Paper</b> (light, cream background, for people who read better on light surfaces).</td></tr>
+    <tr><td>Text size</td><td>Scales the whole app from 90 % to 145 %. Windows and tables reflow.</td></tr>
+    <tr><td>Line spacing · Letter spacing</td><td>More air between lines and between letters. Often the single most helpful change for dyslexia.</td></tr>
+    <tr><td>Calm labels</td><td>Turns off the CAPITAL-LETTER section labels and the stretched tracking. Same words, lower volume.</td></tr>
+    <tr><td>Reduce motion</td><td>No transitions or animations.</td></tr>
+  </table>
+  <h3>Focus mode</h3>
+  <figure><img src="shots/24-focus.png" alt="Focus mode"><figcaption>Focus mode: one item, its steps, a timer. Nothing else on screen.</figcaption></figure>
+  <p>Press <kbd>F</kbd> anywhere, or click <b>Focus</b> on Today or inside any item. The screen shows one item only: its title, description, steps and a running timer. Space pauses the timer. What you can do from there:</p>
+  <ul>
+    <li><b>Tick steps</b> as you go. "Just the next one" shows the single step to do now.</li>
+    <li><b>Break it down for me</b> (when an item has no steps): adds five or six small, ordered steps suited to the item type: tasks, bugs or assets. Edit them freely; they are yours.</li>
+    <li><b>Log &amp; close</b>: the time on the timer is rounded to the nearest quarter hour and logged with your note. Under three minutes logs nothing. <b>Close</b> or <kbd>Esc</kbd> leaves without logging.</li>
+    <li><b>Mark done → next</b>: finishes the item (logging the time first) and moves straight to the next best item.</li>
+    <li><b>Switch to</b>: jumps to the next best item without finishing this one.</li>
+  </ul>
+  <h3>Low-energy day</h3>
+  <p>The switch at the top of Today. When it is on, Today hides the numbers, the forecast, the unfinished list and the table, and shows <b>one small thing</b>: the item with the least time left that fits in about half an hour (or the smallest item overall). <b>Something else</b> rotates to the next candidate; <b>Start in Focus</b> opens it in Focus mode. "Show everything anyway" brings the full screen back for the moment; the switch stays on until you turn it off. Doing that one thing counts as a full day.</p>
+  <h3>Capture</h3>
+  <p>Press <kbd>C</kbd> on any screen, type the thought, press <kbd>Enter</kbd>. It goes to the backlog, unscheduled, so it is out of your head without becoming today's problem. Sort it later from the Backlog.</p>
+  <h3>Break it down (item window)</h3>
+  <p>In the item window, Steps tab, <b>Break it down</b> proposes steps in a text box, one per line. Change, reorder or delete lines, then <b>Add these steps</b>. Pasting your own list works the same way; numbering and bullets are stripped.</p>
+</section>
+
+</body>
+</html>

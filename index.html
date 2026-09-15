@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crucible — production tracking for games and 3D art</title>
+<meta name="description" content="Offline production tracker for game developers and 3D artists. Departments with pipelines, work items and bugs, a planner that tells the truth. Your PC, your files, no account.">
+<meta property="og:title" content="Crucible — production tracking for games and 3D art">
+<meta property="og:description" content="Offline. Departments with pipelines, bugs, a planner that does the maths. Free for individuals.">
+<meta property="og:image" content="img/01-dashboard.png">
+<style>
+  :root { --bg:#1a1b1e; --panel:#222327; --rail:#1f2023; --text:#e9e6e2; --text2:#c9c6c1; --text3:#9a9ca3; --text4:#6f7178; --hair:#2d2e33; --rule:#3a3b41; --accent:#4fb8b5; --tint:rgba(79,184,181,.12); }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif }
+  a { color:var(--accent); text-decoration:none } a:hover { text-decoration:underline }
+  .wrap { max-width:1040px; margin:0 auto; padding:0 24px }
+  header { padding:22px 0; display:flex; align-items:center; gap:18px; border-bottom:1px solid var(--hair) }
+  header .brand { font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:12px; color:var(--accent) }
+  header nav { margin-left:auto; display:flex; gap:18px; font-size:13px; color:var(--text3) } header nav a { color:var(--text3) }
+  .hero { padding:72px 0 40px; display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:center }
+  h1 { font-size:44px; line-height:1.05; margin:0 0 14px; letter-spacing:-.01em }
+  .sub { font-size:19px; color:var(--text2); margin:0 0 26px }
+  .btn { display:inline-block; padding:12px 20px; border:1px solid var(--rule); color:var(--text); border-radius:2px; font-weight:600; font-size:14px }
+  .btn.primary { background:var(--accent); border-color:var(--accent); color:#0f1b1b } .btn.primary:hover { text-decoration:none; filter:brightness(1.08) }
+  .note { font-size:12px; color:var(--text4); margin-top:12px }
+  .shot { border:1px solid var(--rule); background:var(--panel) } .shot img { display:block; width:100%; height:auto }
+  section { padding:44px 0; border-top:1px solid var(--hair) }
+  h2 { font-size:24px; margin:0 0 8px } .lead { color:var(--text3); margin:0 0 26px; max-width:720px }
+  .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:22px }
+  .grid2 { display:grid; grid-template-columns:repeat(2,1fr); gap:22px }
+  .card { background:var(--panel); border:1px solid var(--hair); padding:18px } .card h3 { margin:0 0 6px; font-size:15px } .card p { margin:0; color:var(--text3); font-size:14px }
+  figcaption { font-size:13px; color:var(--text3); margin-top:8px }
+  .video { aspect-ratio:16/9; background:var(--panel); border:1px solid var(--rule); display:flex; align-items:center; justify-content:center; color:var(--text4) } .video iframe { width:100%; height:100%; border:0 }
+  .faq dt { font-weight:600; margin-top:14px } .faq dd { margin:4px 0 0; color:var(--text3) }
+  .warn { background:var(--tint); border-left:3px solid var(--accent); padding:12px 14px; font-size:14px; color:var(--text2) }
+  code { background:#2a2b30; padding:1px 5px; font-size:13px }
+  footer { padding:28px 0 40px; color:var(--text4); font-size:13px; display:flex; gap:18px; flex-wrap:wrap; border-top:1px solid var(--hair) }
+  @media (max-width:820px) { .hero,.grid3,.grid2 { grid-template-columns:1fr } h1 { font-size:34px } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="brand">Crucible</span>
+    <nav><a href="features.html">Features</a><a href="#download">Download</a><a href="docs/">Docs</a><a href="docs/manual/manual.html">Manual</a><a href="CHANGELOG.md">Changelog</a><a href="https://github.com/KillSane-sudo/crucible-releases/issues">Bugs &amp; requests</a></nav>
+  </header>
+
+  <div class="hero">
+    <div>
+      <h1>Production tracking for people who make games and 3D art.</h1>
+      <p class="sub">On your PC, in your files, no account. Departments with pipelines, assets with stages, bugs where they belong, and a planner that tells the truth.</p>
+      <a class="btn primary" href="#download">Download for Windows — free</a>
+      <a class="btn" href="docs/manual/manual.html" style="margin-left:8px">Read the user manual</a>
+      <div class="note">Windows 10/11 · about 4 MB · portable, no installer needed · nothing leaves your computer</div>
+    </div>
+    <figure class="shot" style="margin:0"><img src="img/01-dashboard.png" alt="Crucible dashboard"></figure>
+  </div>
+
+  <section id="why">
+    <h2>Why it exists</h2>
+    <p class="lead">Studios plan production with tools that cost more per seat than most indies earn per month, and that stop working the moment the internet does. Crucible is the tracker one production artist wanted for their own projects: departments with pipelines, assets with stages, bugs where they belong, a planner that tells the truth, and files you own.</p>
+    <div class="grid3">
+      <figure class="shot" style="margin:0"><img src="img/09-item-window.png" alt="Item window"><figcaption>Every task, asset and bug with its stages, hours, screenshots and history.</figcaption></figure>
+      <figure class="shot" style="margin:0"><img src="img/03-planner.png" alt="Planner"><figcaption>A real schedule from your real capacity. When it doesn't fit, it says so.</figcaption></figure>
+      <figure class="shot" style="margin:0"><img src="img/17-impact-banner.png" alt="Add a department: impact"><figcaption>Add a department and see what it costs before you commit.</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="features">
+    <h2>What it does</h2>
+    <div class="grid3">
+      <div class="card"><h3>Departments and pipelines</h3><p>Modeling, Texturing, Gameplay, QA, or your own. Each has stages; every asset you create gets them as a checklist.</p></div>
+      <div class="card"><h3>One work item for everything</h3><p>Tasks, assets, bugs, polish, QA. Estimate, logged hours, remaining, progress, planned days, dependencies, tags, screenshots, history.</p></div>
+      <div class="card"><h3>A planner that does the maths</h3><p>Critical path, capacity from your working days and hours, forecast finish day, deficit, conflicts explained. Deterministic: same project, same answer.</p></div>
+      <div class="card"><h3>Today</h3><p>Ranked work for the day with reasons. Log hours, tick stages, file a bug, replan from reality.</p></div>
+      <div class="card"><h3>Bugs, search, time log, reports</h3><p>Severity, location, repro. Search across everything. Where your hours went. A weekly report you can send.</p></div>
+      <div class="card"><h3>Claude connector</h3><p>Optional. Let Claude create projects, file bugs from playtest notes and read your plan from any chat. Local too.</p></div>
+    </div>
+  </section>
+
+  <section id="focus">
+    <h2>Built for hard days</h2>
+    <p class="lead">ADHD, dyslexia, or just a bad week. Crucible has a Focus mode, a low-energy day, and reading settings that change how it reads without changing what it does.</p>
+    <div class="grid2">
+      <figure class="shot" style="margin:0"><img src="img/24-focus.png" alt="Focus mode"><figcaption>Focus mode (<code>F</code>): one item, its steps, a timer. Time is logged in quarter hours only if you want it to be. "Break it down for me" writes the first small steps.</figcaption></figure>
+      <div>
+        <div class="card" style="margin-bottom:14px"><h3>Low-energy day</h3><p>One switch on Today. The numbers and the tables go away; one small thing that fits in half an hour stays. Doing it counts as a full day.</p></div>
+        <div class="card" style="margin-bottom:14px"><h3>Reading settings</h3><p>Atkinson Hyperlegible or OpenDyslexic fonts (bundled), text size, line and letter spacing, dark, warm or paper theme, calm labels without capitals, reduced motion.</p></div>
+        <div class="card"><h3>Capture and forget</h3><p>Press <code>C</code>, type the thought, Enter. It goes to the backlog, unscheduled, so it is out of your head without becoming today's problem.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="video">
+    <h2>Two-minute tour</h2>
+    <div class="video"><!-- replace with: <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe> -->Video coming with the first public release.</div>
+  </section>
+
+  <section id="data">
+    <h2>Your data</h2>
+    <p class="lead">One folder on your PC. One JSON file per project. Export it, back it up, move it, read it with anything. No account, no server, no telemetry. If this project disappears tomorrow, your projects still open.</p>
+  </section>
+
+  <section id="download">
+    <h2>Download</h2>
+    <p class="lead">Free for individuals. Get the latest release from GitHub: the portable zip (exe, Claude connector, manuals) or the installer. New here? The <a href="docs/manual/manual.html">user manual</a> explains every screen, and the <a href="features.html">feature list</a> shows everything it does.</p>
+    <a class="btn primary" href="https://github.com/KillSane-sudo/crucible-releases/releases/latest">Latest release on GitHub</a>
+    <div class="warn" style="margin-top:18px"><b>About the Windows warning.</b> Crucible is not code-signed yet (certificates cost money and this is a free tool from one person). On first run Windows SmartScreen may say "Windows protected your PC". Click <b>More info</b>, then <b>Run anyway</b>. It happens once. Every release lists SHA-256 checksums so you can verify the file: <code>Get-FileHash Crucible.exe</code> in PowerShell.</div>
+  </section>
+
+  <section id="faq">
+    <h2>Questions</h2>
+    <dl class="faq">
+      <dt>Is it really offline?</dt><dd>Yes. There is no network code in the app.</dd>
+      <dt>Mac or Linux?</dt><dd>Windows first. Ask for it in the issues and it moves up the list.</dd>
+      <dt>Can I use it for non-game projects?</dt><dd>Yes. Departments are just names; the profiles are suggestions.</dd>
+      <dt>Teams?</dt><dd>A Team edition for small studios is in development: shared projects on your own network or drive, assignments and a manager view. <a href="https://github.com/KillSane-sudo/crucible-releases/discussions">Tell me what your studio needs.</a></dd>
+      <dt>Where do bugs and requests go?</dt><dd><a href="https://github.com/KillSane-sudo/crucible-releases/issues">GitHub issues</a>. I answer.</dd>
+      <dt>Who makes this?</dt><dd>One production artist who has shipped AAA environments and wanted the same production discipline for solo work.</dd>
+    </dl>
+  </section>
+
+  <footer>
+    <span>© 2026 Armaan · all rights reserved · compiled builds only</span>
+    <a href="docs/">Documentation</a><a href="CHANGELOG.md">Changelog</a><a href="privacy.html">Privacy</a><a href="LICENSE">Licence</a>
+  </footer>
+</div>
+</body>
+</html>

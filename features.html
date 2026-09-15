@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crucible — Features</title>
+<meta name="description" content="Everything Crucible does: projects, departments, pipelines, work items, planning, daily work, time, views, reports, data, Claude connector, keyboard.">
+<style>
+  :root { --bg:#1a1b1e; --panel:#222327; --text:#e9e6e2; --text2:#c9c6c1; --text3:#9a9ca3; --hair:#2d2e33; --rule:#3a3b41; --accent:#4fb8b5 }
+  * { box-sizing:border-box } body { margin:0; background:var(--bg); color:var(--text); font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif }
+  a { color:var(--accent); text-decoration:none } a:hover { text-decoration:underline }
+  .wrap { max-width:960px; margin:0 auto; padding:0 24px 60px }
+  header { padding:22px 0; display:flex; align-items:center; gap:18px; border-bottom:1px solid var(--hair) }
+  header .brand { font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-size:12px; color:var(--accent) }
+  header nav { margin-left:auto; display:flex; gap:18px; font-size:13px } header nav a { color:var(--text3) }
+  h1 { font-size:34px; margin:40px 0 6px } .lead { color:var(--text3); margin:0 0 28px; max-width:720px }
+  table { width:100%; border-collapse:collapse; font-size:14px } th { text-align:left; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--text3); border-bottom:1px solid var(--rule); padding:8px 10px 8px 0 }
+  td { padding:12px 10px 12px 0; border-bottom:1px solid var(--hair); vertical-align:top; color:var(--text2) } td:first-child { width:160px; font-weight:600; color:var(--text) }
+  .cta { margin-top:34px; display:flex; gap:12px; flex-wrap:wrap } .btn { display:inline-block; padding:11px 18px; border:1px solid var(--rule); color:var(--text); font-weight:600; font-size:14px } .btn.primary { background:var(--accent); border-color:var(--accent); color:#0f1b1b }
+  @media (max-width:640px) { td:first-child { width:110px } }
+</style>
+</head>
+<body><div class="wrap">
+  <header><span class="brand">Crucible</span><nav><a href="index.html">Home</a><a href="docs/">Docs</a><a href="docs/manual/manual.html">User manual</a><a href="https://github.com/KillSane-sudo/crucible-releases/releases/latest">Download</a></nav></header>
+  <h1>Everything Crucible does</h1>
+  <p class="lead">The complete feature list for version 0.7. Every item here is in the free build. For how to use each one, read the <a href="docs/manual/manual.html">user manual</a>.</p>
+  <table>
+    <tr><th>Area</th><th>Features</th></tr>
+    <tr><td>Project</td><td>Name, description, type, profile (Game, Asset library, Level, Minimal, Custom), engine, platform, target FPS · start date · duration 14–365 days with presets · hours per day · working days · current day and calendar date · follow the real calendar · several projects side by side, switch from the rail, delete to a trash folder</td></tr>
+    <tr><td>Departments</td><td>Catalog of about 40 · presets for game, asset library and minimal · custom departments · weights that normalise to 100 · order · production and finalization groups · park and un-park · remove with item move · recommendation from the project description with reasons · next-stage suggestion</td></tr>
+    <tr><td>Pipelines</td><td>Per-department editable stages (add, rename, estimate, type, reorder, skip, remove, reset) · save as template · applied as an asset's checklist of child stages · stages filed into matching departments · reveal, extend and schedule stages when a department is added</td></tr>
+    <tr><td>Work items</td><td>Types task, asset, bug, design, modeling, gameplay, improvement, polish, QA, future · parent–child hierarchy with rollups · status, priority, class S–D, severity · estimate, logged, remaining, progress · planned start and end, pin, deadline, lock · dependencies · blockers · tags · checklist steps with day and required flag · location and reproduction for bugs · comments with edit history · screenshots (file or paste) with zoom · linked files and folders · full timestamped history · delete with children</td></tr>
+    <tr><td>Item window</td><td>One window per item in the desktop app · resizable columns · draft-then-Save · Mark DONE with a gate · tabs Screenshot, Children, Steps, Dependencies and blockers, History · apply a pipeline template · save children as a template</td></tr>
+    <tr><td>Planning</td><td>Deterministic scheduler with real capacity · critical path and slack · dependencies · pins, locks and deadlines honoured · conflicts explained · replan open work from today or everything from day 1 · frozen per-day bookings · day objectives · forecast finish day, variance, deficit · recovery options · advisor rules · add-department impact preview (+hours, +days, forecast before and after)</td></tr>
+    <tr><td>Daily</td><td>Today's focus · next-step engine with reasons and Ignore · current, next, optional · quick actions (time, comment, screenshot, child, bug) · unfinished carry-over · replan from today · logging table · quick capture into the backlog · Focus mode: one item full screen with steps and a timer, time logged in quarter hours · low-energy day: one small thing at a time · capture key</td></tr>
+    <tr><td>Reading &amp; focus</td><td>Fonts: system, Atkinson Hyperlegible, OpenDyslexic (bundled) · text size 90–145 % · line and letter spacing · dark, warm and paper themes · calm labels (no capitals) · reduced motion · "Break it down": suggested small steps for any task, bug or asset, editable before adding</td></tr>
+    <tr><td>Time</td><td>Time entries with day, timestamp and note · totals by day, type, department and item · today, last 7 days, whole project or a custom range · hours-per-day chart against your capacity · corrections by negative entries</td></tr>
+    <tr><td>Views</td><td>Dashboard · Today · Planner · Timeline (days or weeks) · Backlog · department list, kanban with drag, and checklists, with filters and sort · Bugs · Search with eleven filters · Time log · Reports · Project Settings</td></tr>
+    <tr><td>Reports</td><td>Weekly report (progress, health, planned vs actual, completed, new, bugs, blockers, departments, critical path, changes, risks, recommendations) · Markdown, HTML, print to PDF, CSV, JSON · plan vs actual by department · activity stream</td></tr>
+    <tr><td>Data</td><td>Automatic save with a rolling backup · export and import JSON · upgrades from older versions · reset to defaults or to the sample project · templates saved with the project · one folder per project on your PC · no account, no network, no telemetry</td></tr>
+    <tr><td>Claude connector</td><td>Optional local MCP server for Claude Code and the Claude desktop app: list and create projects, recommend and add departments, create tasks, assets and bugs, update, set status and progress, log time, comment, run the planner, read health, next steps, today, search · every change marked with author Claude · no delete</td></tr>
+    <tr><td>Keyboard</td><td>1–6 switch screens · / search · + add department · F focus · C capture · Esc close · Enter to save or log · paste an image · double-click a row to open it</td></tr>
+  </table>
+  <div class="cta"><a class="btn primary" href="https://github.com/KillSane-sudo/crucible-releases/releases/latest">Download for Windows — free</a><a class="btn" href="docs/manual/manual.html">Read the user manual</a></div>
+</div></body></html>

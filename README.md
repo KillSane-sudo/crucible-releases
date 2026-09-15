@@ -20,7 +20,7 @@ Download the portable zip from the latest release, unzip, run `Crucible.exe`. Wi
 
 ## Documentation
 
-[Quick start](docs/quick-start.md) · [User guide](docs/user-guide.md) · [Claude connector](docs/claude-connector.md) · [Prompts](docs/CLAUDE_PROMPTS.md) · [Changelog](CHANGELOG.md)
+[Quick start](docs/quick-start.md) · [User guide](docs/user-guide.md) · [Claude connector](docs/claude-connector.md) · [Changelog](CHANGELOG.md)
 
 ## Bugs and requests
 

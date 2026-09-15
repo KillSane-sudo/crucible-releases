@@ -9,13 +9,13 @@ Crucible is independent project-tracking and bug-tracking software for independe
 | [User guide](user-guide.md) | You want to know what a screen does, where a button is, or how the planner thinks. 23 chapters with screenshots. Also as a [PDF](manual/Crucible-User-Manual.pdf). |
 | [Quick start](quick-start.md) | You have ten minutes and want a project running. |
 | [Claude connector](claude-connector.md) | You want Claude (Claude Code, the desktop app or Cowork) to create projects, tasks and bugs and read your plan from any chat. Also as a [PDF](manual/Crucible-Guide-for-Claude.pdf). |
-| [Prompts](CLAUDE_PROMPTS.md) | Copy-paste prompts for the connector: new project from a brief, log a day's work, playtest notes into bugs, daily check-in. |
 
 ## For the owner
 
 | Read this | When |
 |---|---|
 | [Owner notes](owner-notes.md) | How Crucible is built, released and versioned; where data lives; the decisions already made; the parked ideas. |
+| [Prompts](CLAUDE_PROMPTS.md) | Copy-paste prompts for the connector: new project from a brief, log a day's work, playtest notes into bugs, daily check-in. Private: not synced to the public repo. |
 | [Changelog](../CHANGELOG.md) | What every version added, step by step, from 0.1.0 to today. |
 | [Versions](versions/) | The documentation as it was for each version (PDF snapshots). Builds are in `release/<version>/`. |
 | [Design brief](DESIGN_BRIEF.md) | The visual direction and tokens, written for the UI redesign. |
